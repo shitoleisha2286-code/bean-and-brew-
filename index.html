@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Bean & Brew | Coffee Order Builder</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <header class="topbar">
+    <div class="brand-mark">☕</div>
+    <div>
+      <h1>Bean & Brew</h1>
+      <p>YOUR COFFEE, YOUR WAY</p>
+    </div>
+  </header>
+
+  <main class="app">
+    <section class="customizer panel">
+      <div class="section-heading">
+        <div>
+          <p class="eyebrow">MAKE IT YOURS</p>
+          <h2>Build your coffee</h2>
+        </div>
+        <span class="step-pill">01 — CUSTOMIZE</span>
+      </div>
+
+      <div class="form-section">
+        <h3>Choose your drink</h3>
+        <div class="choice-grid" id="drinkChoices">
+          <button class="choice selected" data-drink="Espresso" type="button"><span class="choice-icon">●</span><span>Espresso</span><small>Bold & rich</small></button>
+          <button class="choice" data-drink="Latte" type="button"><span class="choice-icon">◉</span><span>Latte</span><small>Smooth & milky</small></button>
+          <button class="choice" data-drink="Cappuccino" type="button"><span class="choice-icon">☁</span><span>Cappuccino</span><small>Foamy classic</small></button>
+          <button class="choice" data-drink="Matcha" type="button"><span class="choice-icon">✳</span><span>Matcha</span><small>Earthy & mellow</small></button>
+          <button class="choice" data-drink="Chai" type="button"><span class="choice-icon">♨</span><span>Chai</span><small>Warm & spiced</small></button>
+        </div>
+      </div>
+
+      <div class="form-section">
+        <h3>Pick a size</h3>
+        <div class="segmented" id="sizeChoices">
+          <button type="button" data-size="Small"><span>Small</span><small>8 oz</small></button>
+          <button type="button" data-size="Medium" class="selected"><span>Medium</span><small>12 oz</small></button>
+          <button type="button" data-size="Large"><span>Large</span><small>16 oz</small></button>
+        </div>
+      </div>
+
+      <div class="form-section">
+        <h3>Your milk</h3>
+        <div class="milk-grid" id="milkChoices">
+          <label class="radio-choice"><input type="radio" name="milk" value="Regular" checked><span>Regular</span></label>
+          <label class="radio-choice"><input type="radio" name="milk" value="Oat"><span>Oat <em>+$0.50</em></span></label>
+          <label class="radio-choice"><input type="radio" name="milk" value="Almond"><span>Almond <em>+$0.40</em></span></label>
+          <label class="radio-choice"><input type="radio" name="milk" value="Soy"><span>Soy <em>+$0.35</em></span></label>
+          <label class="radio-choice"><input type="radio" name="milk" value="No Milk"><span>No milk</span></label>
+        </div>
+      </div>
+
+      <div class="form-section">
+        <h3>Little extras <span class="muted">(optional)</span></h3>
+        <div class="extras-grid" id="extraChoices">
+          <label class="check-choice"><input type="checkbox" value="Extra Shot"><span>Extra shot</span><b>+$0.75</b></label>
+          <label class="check-choice"><input type="checkbox" value="Vanilla Syrup"><span>Vanilla syrup</span><b>+$0.60</b></label>
+          <label class="check-choice"><input type="checkbox" value="Caramel Syrup"><span>Caramel syrup</span><b>+$0.60</b></label>
+          <label class="check-choice"><input type="checkbox" value="Whipped Cream"><span>Whipped cream</span><b>+$0.50</b></label>
+        </div>
+      </div>
+
+      <button class="reset-button" id="resetButton" type="button">↺ Start a new order</button>
+    </section>
+
+    <section class="preview-column">
+      <div class="preview panel">
+        <div class="preview-topline"><span class="eyebrow">YOUR CUP</span><span class="live-dot">● LIVE PREVIEW</span></div>
+        <div class="cup-stage">
+          <div class="steam steam-one"></div><div class="steam steam-two"></div>
+          <div class="cup" id="cup">
+            <div class="cup-rim"></div>
+            <div class="coffee-liquid" id="coffeeLiquid"></div>
+            <div class="cup-shine"></div>
+            <div class="cup-label"><span>BEAN</span><span>&</span><span>BREW</span></div>
+          </div>
+          <div class="cup-shadow"></div>
+        </div>
+        <div class="preview-caption"><h2 id="previewDrink">Espresso</h2><p id="previewDescription">Bold, rich, and beautifully simple.</p></div>
+      </div>
+
+      <div class="order-card panel">
+        <div class="section-heading compact">
+          <div><p class="eyebrow">FRESHLY MADE FOR YOU</p><h2>Your little cart <span class="tiny-heart">♥</span></h2></div>
+          <span class="order-number" id="cartCount">0 items</span>
+        </div>
+        <div class="current-order">
+          <div class="current-order-heading"><span>☕ Current cup</span><span id="currentPrice">$3.00</span></div>
+          <div class="order-lines" id="orderLines"></div>
+          <button class="add-button" id="addOrderButton" type="button">＋ Add this coffee to cart</button>
+        </div>
+        <div class="cart-divider"><span>YOUR CART</span><span>♡</span></div>
+        <div class="cart-items" id="cartItems"><p class="empty-cart">Your cart is waiting for something lovely ☁️</p></div>
+        <div class="total-row"><span>Cart total</span><strong id="totalPrice">$0.00</strong></div>
+        <button class="order-button" id="placeOrderButton" type="button">Place all orders <span>→</span></button>
+        <p class="order-note">A little cup of happiness, coming up.</p>
+      </div>
+    </section>
+  </main>
+
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+  <footer>BEAN & BREW <span>·</span> A LITTLE CUP OF HAPPINESS</footer>
+  <script src="script.js"></script>
+</body>
+</html>
